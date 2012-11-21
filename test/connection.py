@@ -26,7 +26,7 @@ from common import CMISURL, CMISUSER, CMISPASS
 client = CmisClient(CMISURL, CMISUSER, CMISPASS)
 
 # Number of repositories
-print "Number of repositories: %d" % len(client.repositories)
+print "Number of repositories: %d\n" % len(client.repositories)
 
 # List of all repositories
 print '=======[ REPOSITORIES INFORMATIONS ]============='
@@ -41,7 +41,7 @@ repo = client.defaultRepository
 
 print '=======[ DEFAULT REPOSITORY ]===================='
 print 'Repository fingerprint: ' + repo.id
-print 'Repository name: ' + repo.name
+print 'Repository name: ' + repo.name + '\n'
 
 info = repo.info
 print '    [INFORMATION]'

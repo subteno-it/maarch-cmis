@@ -32,3 +32,34 @@ First step, Install Trunk version for Maarch Entreprise
     svn checkout http://svn.maarch.org/reports/trunk                    modules/reports
     svn checkout http://svn.maarch.org/tags/trunk                       modules/tags
     svn checkout http://svn.maarch.org/templates/trunk                  modules/templates
+
+Under the directory test, you wil find some Python script to send query on Maarch
+
+Change under test/common.py the URL and login/password for the user, with your information.
+
+After launch python test/connection.py, you must see something similar
+
+.. code-block:: 
+
+    Number of repositories: 1
+    
+    =======[ REPOSITORIES INFORMATIONS ]=============
+    Repository Name: Maarch main Repository
+    Reporistory ID: e1125a70-33c0-11e2-81c1-0800200c9a66
+    ----
+    =======[ END REPOSITORIES INFORMATIONS ]=========
+    
+    =======[ DEFAULT REPOSITORY ]====================
+    Repository fingerprint: e1125a70-33c0-11e2-81c1-0800200c9a66
+    Repository name: Maarch main Repository
+    
+        [INFORMATION]
+        cmisVersionSupported: 1.0
+        repositoryDescription: Maarch main Repository
+        productVersion: 1.4.0
+        rootFolderId: workspace://
+        repositoryId: e1125a70-33c0-11e2-81c1-0800200c9a66
+        repositoryName: Maarch main Repository
+        vendorName: Maarch
+        productName: Maarch Entreprise
+        -------------
