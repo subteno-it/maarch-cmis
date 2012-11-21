@@ -44,10 +44,16 @@ print 'Repository fingerprint: ' + repo.id
 print 'Repository name: ' + repo.name + '\n'
 
 info = repo.info
-print '    [INFORMATION]'
+print '    [INFORMATIONS]'
 for k, v in info.items():
     print '    %s: %s' % (k, v)
-print '    -------------'
+print '    --------------\n'
+
+cap = repo.capabilities
+print '    [CAPABILITIES]'
+for k, v in cap.items():
+    print '    %s: %s' % (k, v)
+print '    --------------\n'
 
 
 

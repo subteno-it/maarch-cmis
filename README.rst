@@ -41,6 +41,7 @@ After launch python test/connection.py, you must see something similar
 
 .. code-block:: 
 
+
     Number of repositories: 1
     
     =======[ REPOSITORIES INFORMATIONS ]=============
@@ -53,7 +54,7 @@ After launch python test/connection.py, you must see something similar
     Repository fingerprint: e1125a70-33c0-11e2-81c1-0800200c9a66
     Repository name: Maarch main Repository
     
-        [INFORMATION]
+        [INFORMATIONS]
         cmisVersionSupported: 1.0
         repositoryDescription: Maarch main Repository
         productVersion: 1.4.0
@@ -62,4 +63,22 @@ After launch python test/connection.py, you must see something similar
         repositoryName: Maarch main Repository
         vendorName: Maarch
         productName: Maarch Entreprise
-        -------------
+        --------------
+    
+        [CAPABILITIES]
+        PWCUpdatable: False
+        VersionSpecificFiling: False
+        Join: None
+        ContentStreamUpdatability: None
+        AllVersionsSearchable: False
+        Renditions: None
+        Multifiling: False
+        GetFolderTree: False
+        GetDescendants: True
+        ACL: None
+        PWCSearchable: False
+        Query: metadataonly
+        Unfiling: True
+        Changes: None
+        --------------
+
