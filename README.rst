@@ -33,52 +33,22 @@ First step, Install Trunk version for Maarch Entreprise
     svn checkout http://svn.maarch.org/tags/trunk                       modules/tags
     svn checkout http://svn.maarch.org/templates/trunk                  modules/templates
 
-Under the directory test, you wil find some Python script to send query on Maarch
+Under the directory test, you will find some unittest to find regressions
 
 Change under test/common.py the URL and login/password for the user, with your information.
 
-After launch python test/connection.py, you must see something similar
+After launch make test, you must see something similar
 
 .. code-block:: 
 
+    platform linux2 -- Python 2.6.5 -- pytest-2.3.4 -- /home/alncchau/Envs/cmis/bin/python
+    collected 5 items 
+    
+    test/test_connection.py:29: test_connection PASSED
+    test/test_connection.py:39: test_repositories PASSED
+    test/test_connection.py:50: test_default_repository PASSED
+    test/test_connection.py:61: test_default_repository_info PASSED
+    test/test_connection.py:80: test_default_repository_capa PASSED
 
-    Number of repositories: 1
-    
-    =======[ REPOSITORIES INFORMATIONS ]=============
-    Repository Name: Maarch main Repository
-    Reporistory ID: e1125a70-33c0-11e2-81c1-0800200c9a66
-    ----
-    =======[ END REPOSITORIES INFORMATIONS ]=========
-    
-    =======[ DEFAULT REPOSITORY ]====================
-    Repository fingerprint: e1125a70-33c0-11e2-81c1-0800200c9a66
-    Repository name: Maarch main Repository
-    
-        [INFORMATIONS]
-        cmisVersionSupported: 1.0
-        repositoryDescription: Maarch main Repository
-        productVersion: 1.4.0
-        rootFolderId: workspace://
-        repositoryId: e1125a70-33c0-11e2-81c1-0800200c9a66
-        repositoryName: Maarch main Repository
-        vendorName: Maarch
-        productName: Maarch Entreprise
-        --------------
-    
-        [CAPABILITIES]
-        PWCUpdatable: False
-        VersionSpecificFiling: False
-        Join: None
-        ContentStreamUpdatability: None
-        AllVersionsSearchable: False
-        Renditions: None
-        Multifiling: False
-        GetFolderTree: False
-        GetDescendants: True
-        ACL: None
-        PWCSearchable: False
-        Query: metadataonly
-        Unfiling: True
-        Changes: None
-        --------------
+
 
