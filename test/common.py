@@ -20,8 +20,10 @@
 #
 ##############################################################################
 
-CMISURL = 'http://www.maarch-cmis.local/ws_server.php/?CMIS'
-CMISUSER = 'superadmin'
-CMISPASS = 'admin'
+import os
+
+CMISURL = os.environ.get('CMIS_HOST', 'http://www.maarch-cmis.local/ws_server.php/?CMIS')
+CMISUSER = os.environ.get('CMIS_USER','superadmin')
+CMISPASS = os.environ.get('CMIS_PASS', 'admin')
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
