@@ -26,78 +26,77 @@ from common import CMISURL, CMISUSER, CMISPASS
 import pytest
 import cmislib
 
-def test_connection():
+
+def setup_module(module):
     try:
-        client = CmisClient(CMISURL, CMISUSER, CMISPASS)
-        client.getDefaultRepository()
+        module.TestConnection.client = CmisClient(CMISURL, CMISUSER, CMISPASS)
+        module.TestConnection.client.getDefaultRepository()
     except cmislib.exceptions.PermissionDeniedException:
         pytest.fail('Connection error')
     except Exception, e:
         pytest.fail('Error ', str(e))
 
+class TestConnection(object):
 
-def test_repositories():
-    """
-    Test all repositories (only one with Maarch)
-    """
-    client = CmisClient(CMISURL, CMISUSER, CMISPASS)
-    for r in client.repositories:
-        if 'repositoryName' not in r:
-            pytest.fail('repositoryName is missing from repositories')
-        if 'repositoryId' not in r:
-            pytest.fail('repositoryId is missing from repositories')
 
-def test_default_repository():
-    """
-    Test the default repositories
-    """
-    client = CmisClient(CMISURL, CMISUSER, CMISPASS)
-    repo = client.defaultRepository
-    if not hasattr(repo, 'id'):
-        pytest.fail('id is missing from repository object')
-    if not hasattr(repo, 'name'):
-        pytest.fail('name is missing from repository object')
+    def test_repositories(self):
+        """
+        Test all repositories (only one with Maarch)
+        """
+        for r in self.client.repositories:
+            if 'repositoryName' not in r:
+                pytest.fail('repositoryName is missing from repositories')
+            if 'repositoryId' not in r:
+                pytest.fail('repositoryId is missing from repositories')
 
-def test_default_repository_info():
-    """
-    Test the default repository
-    """
-    client = CmisClient(CMISURL, CMISUSER, CMISPASS)
-    repo = client.defaultRepository
-    info = repo.info
-    assert info.get('cmisVersionSupported')
-    assert info.get('repositoryDescription')
-    assert info.get('productVersion')
-    assert info.get('rootFolderId')
-    assert info.get('repositoryId')
-    assert info.get('repositoryName')
-    assert info.get('vendorName')
-    assert info.get('productName')
-    # Check value
-    assert info.get('vendorName') == 'Maarch'
-    assert info.get('cmisVersionSupported') >= 1.0
+    def test_default_repository(self):
+        """
+        Test the default repositories
+        """
+        repo = self.client.defaultRepository
+        if not hasattr(repo, 'id'):
+            pytest.fail('id is missing from repository object')
+        if not hasattr(repo, 'name'):
+            pytest.fail('name is missing from repository object')
 
-def test_default_repository_capa():
-    """
-    Test the default repository capabilities
-    """
-    client = CmisClient(CMISURL, CMISUSER, CMISPASS)
-    repo = client.defaultRepository
-    capa = repo.capabilities
+    def test_default_repository_info(self):
+        """
+        Test the default repository
+        """
+        repo = self.client.defaultRepository
+        info = repo.info
+        assert info.get('cmisVersionSupported')
+        assert info.get('repositoryDescription')
+        assert info.get('productVersion')
+        assert info.get('rootFolderId')
+        assert info.get('repositoryId')
+        assert info.get('repositoryName')
+        assert info.get('vendorName')
+        assert info.get('productName')
+        # Check value
+        assert info.get('vendorName') == 'Maarch'
+        assert info.get('cmisVersionSupported') >= 1.0
 
-    assert 'PWCUpdatable' in capa
-    assert 'VersionSpecificFiling' in capa
-    assert 'Join' in capa
-    assert 'ContentStreamUpdatability' in capa
-    assert 'AllVersionsSearchable' in capa
-    assert 'Renditions' in capa
-    assert 'Multifiling' in capa
-    assert 'GetFolderTree' in capa
-    assert 'GetDescendants' in capa
-    assert 'ACL' in capa
-    assert 'PWCSearchable' in capa
-    assert 'Query' in capa
-    assert 'Unfiling' in capa
-    assert 'Changes' in capa
+    def test_default_repository_capa(self):
+        """
+        Test the default repository capabilities
+        """
+        repo = self.client.defaultRepository
+        capa = repo.capabilities
+
+        assert 'PWCUpdatable' in capa
+        assert 'VersionSpecificFiling' in capa
+        assert 'Join' in capa
+        assert 'ContentStreamUpdatability' in capa
+        assert 'AllVersionsSearchable' in capa
+        assert 'Renditions' in capa
+        assert 'Multifiling' in capa
+        assert 'GetFolderTree' in capa
+        assert 'GetDescendants' in capa
+        assert 'ACL' in capa
+        assert 'PWCSearchable' in capa
+        assert 'Query' in capa
+        assert 'Unfiling' in capa
+        assert 'Changes' in capa
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
